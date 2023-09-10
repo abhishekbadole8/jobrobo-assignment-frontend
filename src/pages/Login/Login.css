@@ -1,0 +1,172 @@
+
+.loginContainer {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    font-family: 'DM Sans';
+}
+
+.loginLeftContainer {
+    width: 52%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 7vw;
+}
+
+.loginLeftContainer form {
+    position: relative;
+}
+
+#errormsg,
+#userCreatedMsg {
+    font-size: 1rem;
+    font-weight: 600;
+    position: absolute;
+    margin-left: .15rem;
+}
+
+#userCreatedMsg {
+    color: green;
+}
+
+#errormsg {
+    color: red;
+    bottom: 3.65rem;
+}
+
+.loginLeftContainer h3 {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 144.02%;
+}
+
+.loginLeftContainer p {
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 30px;
+    letter-spacing: 0em;
+    color: #525252;
+}
+
+.errorToggleLoginPage {
+    color: red;
+}
+
+.inputBox {
+    margin: 5vh auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.inputBox input {
+    width: 38vw;
+    height: 8vh;
+    padding-left: 1vw;
+    border: 2px solid #C2C2C2;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 29px;
+    letter-spacing: 0em;
+}
+
+/* Button */
+.loginPageFalseBtn {
+    cursor: pointer;
+    width: 11vw;
+    height: 5.5vh;
+    color: #fff;
+    background-color: #2c3034;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: 0em;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 1.5vh;
+}
+
+.loginPageTrueBtn {
+    cursor: pointer;
+    width: 11vw;
+    height: 5.5vh;
+    color: #fff;
+    background-color: #000;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: 0em;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 1.5vh;
+}
+.right-side{
+    width: 100%;
+    height: 100%;
+    background-color: #2c3034;
+}
+@media only screen and (max-width:850px) {
+
+    .loginLeftContainer {
+        width: 100%;
+        padding: 0 4vw;
+        gap: 4vh;
+    }
+
+    .loginLeftContainer form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 4vh;
+        position: relative;
+    }
+
+    #errormsg,
+    #userCreatedMsg {
+        font-size: 1rem;
+        font-weight: 600;
+        position: absolute;
+        margin-left: .5rem;
+    }
+
+    #userCreatedMsg {
+        top: -1.75rem;
+        color: green;
+    }
+
+    #errormsg {
+        color: red;
+        bottom: 2.9rem;
+    }
+
+    .loginLeftContainer h3 {
+        font-size: 1.7rem;
+    }
+
+    .loginLeftContainer p {
+        font-size: 1.2rem;
+    }
+
+    .inputBox {
+        margin: 1vh 0;
+        flex-direction: column;
+        gap: 3vh;
+    }
+
+    .inputBox input {
+        width: 100%;
+        padding-left: 1.6vw;
+    }
+
+    .loginPageFalseBtn,
+    .loginPageTrueBtn {
+        width: 100%;
+        margin: 0;
+    }
+
+}

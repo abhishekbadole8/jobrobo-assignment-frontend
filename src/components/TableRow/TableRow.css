@@ -1,0 +1,16 @@
+.btn {
+    margin-right: .35rem;
+    padding: .2rem .55rem;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.edit-button:hover {
+    background: #000;
+    color: #fff;
+}
+
+.delete-button:hover {
+    background: #000;
+    color: #fff;
+}

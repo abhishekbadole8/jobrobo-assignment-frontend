@@ -1,0 +1,52 @@
+.modal-wrapper {
+    top: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-box {
+    background: #fff;
+    padding: 1.5vh 2vw;
+    border-radius: 5px;
+    display: flex;
+    align-items: flex-end;
+    gap: 2vw;
+}
+
+.input-inside-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-inside-container input {
+    margin-bottom: .75vh;
+    width: 12vw;
+    padding: .5vh .75vw;
+
+    border-radius: 5px;
+}
+
+.border-red {
+    border: 1px solid red;
+}
+
+.border-grey {
+    border: 1.5px solid #ABABAB;
+}
+
+.update-button {
+    padding: .5vh .75vw;
+    border-radius: 5px;
+    border: 1px solid #ABABAB;
+    margin-bottom: .45rem;
+}
+
+.update-button:hover {
+    background: #000;
+    color: #fff;
+}
