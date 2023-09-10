@@ -30,10 +30,10 @@ function App() {
       <UserContext.Provider value={{ BASE_USER_URL, BASE_CONTACT_URL, isLoading, setIsLoading, errorMsg, setErrorMsg, token, setToken, contacts, setContacts }}>
         <Router>
           <Routes>
-            <Route exact path='/login' element={token ? <Navigate to="/" /> : <Login />} />
-            <Route exact path='/register' element={token ? <Navigate to="/" /> : <Register />} />
-            <Route exact path='/' element={!token ? <Navigate to="/login" /> : <Home />} />
-            <Route exact path='/home' element={!token ? <Navigate to="/login" /> : <Home />} />
+            <Route path='/login' element={token ? <Navigate to="/" /> : <Login />} />
+            <Route path='/register' element={token ? <Navigate to="/" /> : <Register />} />
+            <Route path='/' element={!token ? <Navigate to="/login" /> : <Home />} />
+            <Route path='/home' element={!token ? <Navigate to="/login" /> : <Home />} />
           </Routes>
         </Router>
       </UserContext.Provider>
