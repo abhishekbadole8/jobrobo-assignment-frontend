@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Home from './pages/Home/Home'
 import Login from './pages/Login/Login'
 import Register from './pages/Signup/Signup'
+import ProtectedRoute from './components/shared/ProtectedRoute'
 
 export const UserContext = createContext()
 
@@ -30,10 +31,16 @@ function App() {
       <UserContext.Provider value={{ BASE_USER_URL, BASE_CONTACT_URL, isLoading, setIsLoading, errorMsg, setErrorMsg, token, setToken, contacts, setContacts }}>
         <Router>
           <Routes>
-            <Route path='/login' element={token ? <Navigate to="/" /> : <Login />} />
-            <Route path='/register' element={token ? <Navigate to="/" /> : <Register />} />
-            <Route path='/' element={!token ? <Navigate to="/login" /> : <Home />} />
-            <Route path='/home' element={!token ? <Navigate to="/login" /> : <Home />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+
+            {/* Protected Route */}
+            <ProtectedRoute path="/" token={token}>
+              <Home />
+            </ProtectedRoute>
+            <ProtectedRoute path="/home" token={token}>
+              <Home />
+            </ProtectedRoute>
           </Routes>
         </Router>
       </UserContext.Provider>
