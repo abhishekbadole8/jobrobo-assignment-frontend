@@ -32,7 +32,6 @@ function App() {
           <Routes>
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
-
             <Route path='/' element={!token ? <Navigate to="/login" /> : <Home />} />
             <Route path='/home' element={!token ? <Navigate to="/login" /> : <Home />} />
           </Routes>

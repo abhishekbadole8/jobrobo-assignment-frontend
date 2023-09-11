@@ -8,7 +8,7 @@ import Modal from "../../components/Modal/Modal"
 
 function Home() {
     const modalRef = useRef()
-    
+
     const { BASE_CONTACT_URL, token, setContacts, contacts, isLoading, setIsLoading, setErrorMsg } = useContext(UserContext)
 
     const [searchValue, setSearchValue] = useState('')
@@ -111,6 +111,9 @@ function Home() {
     const validateForm = () => {
         let newErrors = {}
 
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        const mobileRegex = /^[0-9]{10}$/;
+
         if (!inputValue.firstName) {
             newErrors.firstName = 'firstName is required'
         }
@@ -119,9 +122,13 @@ function Home() {
         }
         if (!inputValue.email) {
             newErrors.email = 'Email is required'
+        } else if (!emailRegex.test(inputValue.email)) {
+            newErrors.email = 'Invalid email address'
         }
         if (!inputValue.mobile) {
             newErrors.mobile = 'Mobile is required'
+        } else if (!mobileRegex.test(inputValue.mobile)) {
+            newErrors.mobile = 'Invalid mobile number';
         }
 
         setErrorMsg(newErrors)
@@ -129,11 +136,11 @@ function Home() {
         // Return true if there are no errors, false otherwise
         return Object.keys(newErrors).length === 0;
     }
-    
+
     const handleSubmit = () => {
 
         let noerror = validateForm()
-        
+
         if (noerror) {
             setIsLoading(true)
             fetchAddContact()

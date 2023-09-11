@@ -1,8 +1,8 @@
-import "./Signup.css"
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import "./Signup.css"
 import { UserContext } from "../../App";
+import axios from "axios";
 
 function Register() {
     const navigate = useNavigate()
@@ -44,11 +44,15 @@ function Register() {
     const validateForm = () => {
         let newErrors = {}
 
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
         if (!userSignupInput.username) {
             newErrors.username = 'Name is required'
         }
         if (!userSignupInput.email) {
             newErrors.email = 'Email is required'
+        }else if(!emailRegex.test(userSignupInput.email)){
+            newErrors.email = 'Invalid email address'
         }
         if (!userSignupInput.password) {
             newErrors.password = 'Password is required'

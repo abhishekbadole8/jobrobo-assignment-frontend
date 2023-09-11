@@ -47,8 +47,13 @@ function Login() {
     const validateForm = () => {
         let newErrors = {}
 
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
         if (!userLoginInput.email) {
             newErrors.email = 'Email is required'
+        }
+        else if (!emailRegex.test(userLoginInput.email)) {
+            newErrors.email = 'Invalid email address'
         }
         if (!userLoginInput.password) {
             newErrors.password = 'Password is required'
@@ -72,50 +77,50 @@ function Login() {
     }
 
     return (
-            <div className='loginContainer'>
+        <div className='loginContainer'>
 
-                <div className='loginLeftContainer'>
+            <div className='loginLeftContainer'>
 
-                    <div>
-                        <h3>Already have an account?</h3>
-                        <p>Your personal job finder is here</p>
+                <div>
+                    <h3>Already have an account?</h3>
+                    <p>Your personal job finder is here</p>
+                </div>
+
+                <form onSubmit={handleSubmit}>
+
+                    {location.state !== null && <p id='userCreatedMsg'>{location.state.msg}</p>}
+
+                    <div className='inputBox'>
+
+                        <input type="email" name="email" value={userLoginInput.email} onChange={handelInput} placeholder="Email" />
+
+                        <input type="password" name="password" value={userLoginInput.password} onChange={handelInput} placeholder="password" />
                     </div>
 
-                    <form onSubmit={handleSubmit}>
-
-                        {location.state !== null && <p id='userCreatedMsg'>{location.state.msg}</p>}
-
-                        <div className='inputBox'>
-
-                            <input type="email" name="email" value={userLoginInput.email} onChange={handelInput} placeholder="Email" />
-
-                            <input type="password" name="password" value={userLoginInput.password} onChange={handelInput} placeholder="password" />
+                    {errorMsg && Object.keys(errorMsg).length > 0 && (
+                        <div>
+                            {Object.keys(errorMsg).map((key) => (
+                                <p key={key} id="errormsg">
+                                    {errorMsg[key]}
+                                </p>
+                            ))}
                         </div>
+                    )}
 
-                        {errorMsg && Object.keys(errorMsg).length > 0 && (
-                            <div>
-                                {Object.keys(errorMsg).map((key) => (
-                                    <p key={key} id="errormsg">
-                                        {errorMsg[key]}
-                                    </p>
-                                ))}
-                            </div>
-                        )}
+                    <button type="submit"
+                        className={`${isLoading ? 'loginPageTrueBtn' : userLoginInput.email && userLoginInput.password ? 'loginPageTrueBtn' : 'loginPageFalseBtn'}`}
+                        disabled={isLoading || (!userLoginInput.email || !userLoginInput.password)}>
+                        {isLoading ? 'Loading...' : 'Sign in'}
+                    </button>
 
-                        <button type="submit"
-                            className={`${isLoading ? 'loginPageTrueBtn' : userLoginInput.email && userLoginInput.password ? 'loginPageTrueBtn' : 'loginPageFalseBtn'}`}
-                            disabled={isLoading || (!userLoginInput.email || !userLoginInput.password)}>
-                            {isLoading ? 'Loading...' : 'Sign in'}
-                        </button>
+                </form>
 
-                    </form>
+                <p>Dont have an account? <span><a href="/register">Sign Up</a></span></p>
 
-                    <p>Dont have an account? <span><a href="/register">Sign Up</a></span></p>
+            </div>
+            < div className="right-side" ></div>
+        </div >
 
-                </div>
-                    < div className="right-side" ></div>
-            </div >
-        
     )
 }
 
